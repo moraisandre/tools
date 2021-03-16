@@ -53,7 +53,7 @@ jobs:
           # FTP password
           password: ${{ secrets.FTP_PASSWORD }}
           # Local directory
-          localDir: 'dist'
+          localDir: 'dist/tools'
 
 
 
