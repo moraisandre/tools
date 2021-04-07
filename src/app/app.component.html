@@ -1,10 +1,13 @@
-<app-nav-bar></app-nav-bar>
+<div class="container-fluid">
+  <app-nav-bar></app-nav-bar>
+  <div class="row">
+    
+    <app-side-menu></app-side-menu>
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 
-<div class="d-flex">
-  <app-side-menu></app-side-menu>
-  
-  <div class="container">
-    <router-outlet></router-outlet>
+      <router-outlet></router-outlet>
+    </main>
+    
   </div>
-</div>
 
+</div>

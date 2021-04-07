@@ -1,9 +1,17 @@
-<!-- Sidebar -->
-<div class="bg-light border-right" id="sidebar-wrapper">
-    <!-- <div class="sidebar-heading">Start Bootstrap </div> -->
-    <div class="list-group list-group-flush">
-      <a [routerLink]="['cpf']" class="list-group-item list-group-item-action bg-light">CPF/CNPJ</a>
-      <!-- <a href="#" class="list-group-item list-group-item-action bg-light">Base 64</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Codigo de Barras</a> -->
-    </div>
+<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+  <div class="sidebar-sticky">
+    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+      <span>Generators</span>
+    </h6>
+    <ul class="nav flex-column">
+
+      <li class="nav-item">
+        <a class="nav-link active" [routerLink]="['cpf']">
+          CPF <span class="sr-only">(current)</span>
+        </a>
+      </li>
+
+    </ul>
   </div>
+
+</nav>
