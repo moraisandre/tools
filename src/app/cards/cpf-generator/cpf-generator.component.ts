@@ -14,13 +14,13 @@ export class CpfGeneratorComponent implements OnInit {
   constructor(private cpfService: CPFService) { }
 
   ngOnInit(): void {
-    this.cpf = this.cpfService.generateCPF();
-    this.cpfMasked = this.cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+    // this.cpf = this.cpfService.generateCPF();
+    // this.cpfMasked = this.cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
   }
 
   generateCPF(){
-    this.cpf = this.cpfService.generateCPF();
-    this.cpfMasked = this.cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+    // this.cpf = this.cpfService.generateCPF();
+    // this.cpfMasked = this.cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
   }
 
 }

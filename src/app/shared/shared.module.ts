@@ -6,9 +6,11 @@ import { CPFService } from './services/cpf.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { ClipboardModule } from 'ngx-clipboard';
-
+import { NgbAlertModule, NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { ToastService } from './services/toast/toast.service';
+import { ToastsContainer } from './services/toast/toasts-container.component';
 @NgModule({
-  declarations: [],
+  declarations: [ToastsContainer],
   imports: [
     CommonModule,
     FormsModule,
@@ -18,6 +20,9 @@ import { ClipboardModule } from 'ngx-clipboard';
     TextMaskModule,
     NgBrazil,
     ClipboardModule,
+    NgbModule,
+    NgbPaginationModule,
+    NgbAlertModule,
   ],
   exports: [
     FormsModule,
@@ -27,9 +32,15 @@ import { ClipboardModule } from 'ngx-clipboard';
     TextMaskModule,
     NgBrazil,
     ClipboardModule,
+    NgbModule,
+    NgbPaginationModule,
+    NgbAlertModule,
+    // Components
+    ToastsContainer,
   ],
   providers: [
-    CPFService
+    CPFService,
+    ToastService,
   ]
 })
 export class SharedModule { }
