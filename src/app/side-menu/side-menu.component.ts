@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-side-menu',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideMenuComponent implements OnInit {
 
-  constructor() { }
+  active = 'nav-link active';
+  normal = 'nav-link';
+
+  constructor(public router: Router) { }
 
   ngOnInit(): void {
   }

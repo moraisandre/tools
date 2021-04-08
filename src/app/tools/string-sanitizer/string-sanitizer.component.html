@@ -1,0 +1,18 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">String Sanitizer</h1>
+</div>
+<p>
+    Remove any special characters
+</p>
+
+<div class="form-group">
+    <label for="dirty">Text to sanitize</label>
+    <textarea class="form-control" id="dirty" [(ngModel)]="dirtyText" rows="3"></textarea>
+</div>
+
+<a (click)="sanitize()" class="btn btn-primary">Sanitize</a>
+
+<div class="form-group">
+    <label for="clean">Sanitized string</label>
+    <textarea class="form-control" id="clean" [(ngModel)]="cleanText" rows="3"></textarea>
+</div>
