@@ -7,12 +7,35 @@
 
 <div class="form-group">
     <label for="dirty">Text to sanitize</label>
-    <textarea class="form-control" id="dirty" [(ngModel)]="dirtyText" rows="3"></textarea>
+    <textarea class="form-control" id="dirty" [(ngModel)]="dirtyText" rows="6"></textarea>
 </div>
+
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" [value]="SanitizeType.HTML" [(ngModel)]="selectedType">
+    <label class="form-check-label" for="inlineRadio1">HTML Sanitize</label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" [value]="SanitizeType.ALL" [(ngModel)]="selectedType">
+    <label class="form-check-label" for="inlineRadio2">Remove all special characters</label>
+  </div>
+  <br>
+  <div *ngIf="selectedType === SanitizeType.ALL">
+      <div class="form-check form-check-inline">
+        <input #keepSpace class="form-check-input" type="checkbox" id="inlineCheckbox1" (change)="manageSubTypes(keepSpace.checked, keepSpace.value)" [value]="SanitizeSubType.KEEP_SPACES">
+        <label class="form-check-label" for="inlineCheckbox1">Keep spaces</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input #removeNumbers class="form-check-input" type="checkbox" id="inlineCheckbox2" (change)="manageSubTypes(removeNumbers.checked, removeNumbers.value)" [value]="SanitizeSubType.REMOVE_NUMBERS">
+        <label class="form-check-label" for="inlineCheckbox2">Remove numbers</label>
+      </div>
+  </div>
+
+<br>
 
 <a (click)="sanitize()" class="btn btn-primary">Sanitize</a>
 
+<hr>
 <div class="form-group">
     <label for="clean">Sanitized string</label>
-    <textarea class="form-control" id="clean" [(ngModel)]="cleanText" rows="3"></textarea>
+    <textarea class="form-control" id="clean" [(ngModel)]="cleanText" rows="6"></textarea>
 </div>

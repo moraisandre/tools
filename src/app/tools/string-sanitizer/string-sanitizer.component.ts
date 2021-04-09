@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SanitizeSubType } from 'src/app/shared/enums/sanitizer-sub-type.enum';
+import { SanitizeType } from 'src/app/shared/enums/sanitizer-type.enum';
 
 @Component({
   selector: 'app-string-sanitizer',
@@ -10,6 +12,11 @@ export class StringSanitizerComponent implements OnInit {
   dirtyText = '';
   cleanText = '';
 
+  SanitizeType = SanitizeType;
+  selectedType = SanitizeType.HTML;
+  SanitizeSubType = SanitizeSubType;
+  selectedSubTypes: SanitizeSubType[] = [];
+
   constructor() { }
 
   ngOnInit(): void {
@@ -17,8 +24,63 @@ export class StringSanitizerComponent implements OnInit {
 
   sanitize() {
 
-    this.cleanText = this.dirtyText.replace(/[^a-zA-Z0-9]/g, "");
+    switch (this.selectedType) {
+      case SanitizeType.HTML:
+        this.sanitizeHtml();
+        break;
+      case SanitizeType.ALL:
+        this.removeAllCharacters();
+        break;
+      default:
+        break;
+    }
 
   }
 
+
+  removeAllCharacters(){
+
+    let tempText = this.dirtyText;
+    console.log(this.selectedSubTypes);
+
+    if (this.selectedSubTypes.length > 0) {
+      if (this.selectedSubTypes.includes(SanitizeSubType.KEEP_SPACES)){
+        console.log('KEEP_SPACES');
+        tempText = tempText.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, "").replace(/ /g, " ");
+        console.log(tempText);
+        
+        
+      }
+      
+      if (this.selectedSubTypes.includes(SanitizeSubType.REMOVE_NUMBERS)) {
+        console.log('REMOVE_NUMBERS');
+        tempText = tempText.replace(/[0-9]/g, "");
+        console.log(tempText);
+      }
+
+    } else {
+      tempText = tempText.replace(/[^a-zA-Z0-9]/g, "");
+    }
+    
+    this.cleanText = tempText;
+  }
+
+  sanitizeHtml() {
+    this.cleanText = this.dirtyText
+                          .replace(/&(?![a-zA-Z0-9#]{1,20};)/g, '&amp;')
+                          .replace(/</g, '&lt;')
+                          .replace(/>/g, '&gt;');
+  }
+
+  manageSubTypes(event: any, subType: any) {
+
+    if (event) {
+      this.selectedSubTypes.push(parseInt(subType,10));
+    } else {
+      this.selectedSubTypes = this.selectedSubTypes.filter(el => {
+        return el != subType;
+      });
+    }
+
+  }
 }
