@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Validate CPF</h1>
+</div>
+<p>
+    The CPF number (Cadastro de Pessoas Físicas, Portuguese for "Natural Persons Register") is the Brazilian individual taxpayer registry identification. This number is attributed by the Brazilian Federal Revenue to Brazilians and resident aliens who, directly or indirectly, pay taxes in Brazil.
+</p>
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h2 class="h4">CPF Validator</h2>
+</div>
+
+<div class="row">
+    <div class="col-sm-6">
+
+        <div class="card-body text-center">
+            <label for="cpfField">CPF</label>
+            <div class="d-flex">
+              <input
+                type="text"
+                class="form-control"
+                name="cpfField"
+                placeholder="Enter CPF"
+                [(ngModel)]="cpfText"
+              />
+              <button class="btn btn-primary" (click)="reset()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                </svg>
+              </button>
+            </div>
+            <br />
+            <div
+              *ngIf="cpfValid && enableMessage"
+              class="alert alert-success"
+              role="alert"
+            >
+              CPF is valid!
+            </div>
+            <div
+              *ngIf="!cpfValid && enableMessage"
+              class="alert alert-danger"
+              role="alert"
+            >
+              CPF is NOT valid!
+            </div>
+            <div *ngIf="!enableMessage" class="alert alert-light" role="alert">
+              CPF can be with or without mask
+            </div>
+            <button class="btn btn-primary" (click)="validateCPF()">Validate</button>
+          </div>
+    </div>
+
+</div>

@@ -1,10 +1,19 @@
-<h1>Welcome to Tools</h1>
-<p>Here is the most used tools, you can access more tools and get more in the menu</p>
-<div class="row row-cols-1 row-cols-md-2 g-4">
-    <div class="col">
-        <app-cpf-generator></app-cpf-generator>
-    </div>
-    <div class="col">
-        <app-cpf-validator></app-cpf-validator>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Welcome to Tools</h1>
+</div>
+
+<p>A set of online tools to help you while coding. Missing a online tool? Make a pull request on <a target="_blank" href="https://github.com/moraisandre/tools">Github</a>.</p>
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h4>Available Tools</h4>
+</div>
+<div class="row">
+    <div *ngFor="let group of menu" class="col-md-3">
+        
+        <h5>{{group.title}}</h5>
+        <a *ngFor="let item of group.items" class="list-group-item list-group-item-action" [routerLink]="[item.url]">
+            {{item.name}}
+        </a>
+    
     </div>
 </div>

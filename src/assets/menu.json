@@ -1,0 +1,29 @@
+[
+    {
+        "title": "Functions",
+        "items": [
+            {
+                "name": "String Sanitizer",
+                "url": "string-sanitizer"
+            }
+        ]
+    },
+    {
+        "title": "Generators",
+        "items": [
+            {
+                "name": "CPF",
+                "url": "generate-cpf"
+            }
+        ]
+    },
+    {
+        "title": "Validators",
+        "items": [
+            {
+                "name": "CPF",
+                "url": "validate-cpf"
+            }
+        ]
+    }
+]
