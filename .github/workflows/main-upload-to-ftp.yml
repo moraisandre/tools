@@ -46,7 +46,7 @@ jobs:
         uses: coverallsapp/github-action@v1.1.2
         with:
           # 
-          github-token: ${{ secrets.COVERALLS_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       
       # Runs npm build --prod
       - name: npm run build:ci
