@@ -25,20 +25,33 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/tools'),
+      dir: require('path').join(__dirname, './coverage'),
       subdir: '.',
       reporters: [
         { type: 'html' },
-        { type: 'text-summary' }
-      ]
+        { type: 'text-summary' },
+        { type: 'cobertura', file: 'coverage.xml' },
+      ],
     },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
+    // autoWatch: false,
+    browsers: ['ChromeHeadless'],
     autoWatch: true,
-    browsers: ['Chrome'],
+    // browsers: ['Chrome'],
     singleRun: false,
-    restartOnFileChange: true
+    customLaunchers: {
+      ChromeHeadless: {
+          base: 'Chrome',
+          flags: [
+              '--no-sandbox',
+              '--headless',
+              '--disable-gpu',
+              '--remote-debugging-port=9222',
+          ],
+      },
+    }
   });
 };

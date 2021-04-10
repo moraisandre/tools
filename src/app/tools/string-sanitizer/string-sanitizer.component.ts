@@ -31,31 +31,22 @@ export class StringSanitizerComponent implements OnInit {
       case SanitizeType.ALL:
         this.removeAllCharacters();
         break;
-      default:
-        break;
     }
-
   }
-
 
   removeAllCharacters(){
 
     let tempText = this.dirtyText;
-    console.log(this.selectedSubTypes);
 
     if (this.selectedSubTypes.length > 0) {
       if (this.selectedSubTypes.includes(SanitizeSubType.KEEP_SPACES)){
-        console.log('KEEP_SPACES');
         tempText = tempText.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, "").replace(/ /g, " ");
-        console.log(tempText);
         
         
       }
       
       if (this.selectedSubTypes.includes(SanitizeSubType.REMOVE_NUMBERS)) {
-        console.log('REMOVE_NUMBERS');
         tempText = tempText.replace(/[0-9]/g, "");
-        console.log(tempText);
       }
 
     } else {

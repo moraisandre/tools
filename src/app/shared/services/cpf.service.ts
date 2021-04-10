@@ -39,13 +39,17 @@ export class CPFService {
 
   constructor() { }
 
-  generateCPF(state: StateCPF, masked: boolean = true): string {
+  generateCPF(state?: StateCPF, masked: boolean = true): string {
     var cpfTemp: number[] = [];
 
     var validacaoPrimeiroDigito = 10;
     var validacaoSegundoDigito = 11;
     var somaValidacaoPrimeiro = 0;
     var somaValidacaoSegundo = 0;
+
+    if (state === null || state === undefined) {
+      state = new StateCPF(-1, 'Any');
+    }
 
     for (let i = 0; i < 9; i++) {
       cpfTemp[i] = state.code >= 0 && i == 8 ? state.code : Math.floor(Math.random() * 10);
@@ -84,7 +88,7 @@ export class CPFService {
     return masked ? this.addMaskToCPF(cpf) : cpf;
   }
 
-  validateCPF(cpf: string) {
+  validateCPF(cpf: string): boolean {
     cpf = cpf.replace(/\D/g,'');
     var cpfTemp: number[] = [];
 
@@ -131,6 +135,6 @@ export class CPFService {
   }
 
   addMaskToCPF(cpf: string) {
-    return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+    return cpf.padStart(11, '0').replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
   }
 }
