@@ -34,10 +34,23 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      # Runs npm i and build
-      - name: npm install and ng run build:ci
+      # Runs npm i and test
+      - name: npm install and ng run test:ci
         run: |
           npm i  
+          npm run test:ci
+          
+      - name: Coveralls GitHub Action
+        # You may pin to the exact commit or the version.
+        # uses: coverallsapp/github-action@8cbef1dea373ebce56de0a14c68d6267baa10b44
+        uses: coverallsapp/github-action@v1.1.2
+        with:
+          # 
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      
+      # Runs npm build --prod
+      - name: npm run build:ci
+        run: |
           npm run build:ci
           
       # Upload to FTP
